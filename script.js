@@ -1,5 +1,16 @@
-// Don't use document.write. If you want to add content to a page you need to work with the DOM. Google "create div javascript" or "create span javascript" for examples, you basically need to create an element that has your text in it and add that element to the part of the page you want the text to display.
+  const submit = document.getElementById('submit');
+  submit.addEventListener('click',display);
 
+function display(){
+  console.log('this function ran');
+  const input = document.getElementById('task');
+  const toDo = input.value;
+  var t = document.createTextNode(toDo);
+  console.log(t);
+  const li = document.getElementById('list');
+  const result = li.appendChild(t);
+  // console.log(result);
+}
 
 
 
