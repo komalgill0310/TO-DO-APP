@@ -1,3 +1,8 @@
-#list{
-  text-decoration: none;
+.title{
+  text-align: center;
+}
+
+
+.strike{
+  text-decoration: line-through;
 }

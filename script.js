@@ -1,17 +1,21 @@
   const li = document.getElementById('list');;
   const submit = document.getElementById('submit');
+  const check = document.createElement('input');
 
-  submit.addEventListener('click',radioButton);  
+  submit.addEventListener('click',checkBox);  
   submit.addEventListener('click',display);
+  // submit.addEventListener('checked',strikeThrough);
+check.addEventListener('click',strikeThrough);
 
-  function radioButton(){
-    const radio = document.createElement('input');
-    radio.setAttribute('type','radio');
-    li.appendChild(radio);
-    console.log(radio);
-    // if(radio.onclick==true){
-    //   result.strike();
-    }  
+  function checkBox(){
+    // const check = document.createElement('input');
+    check.setAttribute('type','checkbox');
+    li.appendChild(check);
+    console.log(check);
+    // if(check.checked==false){
+    //   li.classList.remove("strike");  
+    // }      
+  }
 
 function display(){
   console.log('this function ran');
@@ -24,11 +28,9 @@ function display(){
   li.appendChild(document.createElement('br'));
 }
 
-// function checkStrike(){
-//   console.log("ran");
-//   if(radio.checked==true){
-//     strike();}
-// }
+function strikeThrough(){
+  li.classList.toggle("strike");
+}
 
 
 
