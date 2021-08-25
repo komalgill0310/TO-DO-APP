@@ -11,9 +11,11 @@
     check.setAttribute('type','checkbox');
     li.appendChild(check);
     console.log(check); 
-    if(check.checked==true){
-      // check.addEventListener('click',strikeThrough);
-      li.classList.toggle("strike");
+    // if(check.checked=="true"){
+    //   // check.addEventListener('click',strikeThrough);
+    //   li.classList.toggle("strike");
+    if(check.checked==false){
+      check.addEventListener('click',strikeThrough);
     }
   }
 
@@ -27,9 +29,9 @@ function display(){
   li.appendChild(document.createElement('br'));
 }
 
-// function strikeThrough(){
-//   li.classList.toggle("strike");
-// }
+function strikeThrough(){
+  li.classList.toggle("strike");
+}
 
 
 
