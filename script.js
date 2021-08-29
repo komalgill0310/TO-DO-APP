@@ -1,5 +1,7 @@
-const ul = document.getElementById('list');
+const ul = document.getElementById('list'); 
 const submit = document.getElementById('submit');
+// const cancel = document.getElementById('delete');
+// cancel();
 
 submit.addEventListener('click',display);
 ul.addEventListener('click',checkOff);
@@ -11,28 +13,43 @@ function checkBox(){
   return check;      
 }
 
+function cancel(){
+  const deleteToDo = document.createElement('button');
+  deleteToDo.innerHTML = "Delete";
+  console.log(deleteToDo);
+  return deleteToDo;
+}
+
 function display(){
   console.log('this function ran');
   const input = document.getElementById('taskBox');
-  const toDo = input.Value;
+  const toDo = input.value;
   const textNode = document.createTextNode(toDo);
-  // const ul = document.getElementById('list');
   const li = document.createElement('li'); 
   const check = checkBox();
   li.appendChild(check);  
   li.appendChild(textNode);
   ul.appendChild(li);
   const nextLine = document.createElement('br');
+  const deleteToDo = cancel();
+  li.appendChild(deleteToDo);
   ul.appendChild(nextLine);
 }
   
 function checkOff(e){
-  const toDoItem = e.target.parentElement;
-  if(toDoItem.classList.contains("strike")){
-     toDoItem.classList.remove("strike");
+  console.log("e");
+  const boxCheck = e.target;
+  if(boxCheck.type==="checkbox"){
+  boxCheck.checked = !boxCheck.checked;
+
+  if(boxCheck.checked){
+    boxCheck.checked = false;
+    boxCheck.parentElement.classList.remove("strike");
   }
-  else{
-     toDoItem.classList.add("strike");
+  else if(!boxCheck.checked){
+    boxCheck.checked = true;
+    boxCheck.parentElement.classList.add("strike");
+  }
   }
 }
 
@@ -94,40 +111,6 @@ function checkOff(e){
 
 
 
-//   const li = document.getElementById('list');;
-//   const submit = document.getElementById('submit');
-//   // const check = document.createElement('input');
-
-//   submit.addEventListener('click',checkBox);  
-//   submit.addEventListener('click',display);
-//   // checkBox.addEventListener('click',strikeThrough);
-
-//   function checkBox(){
-//     const check = document.createElement('input');
-//     check.setAttribute('type','checkbox');
-//     li.appendChild(check);
-//     console.log(check); 
-//     // if(check.checked=="true"){
-//     //   // check.addEventListener('click',strikeThrough);
-//     //   li.classList.toggle("strike");
-//     if(check.checked){
-//       check.addEventListener('click',strikeThrough);
-//     }
-//   }
-
-// function display(){
-//   console.log('this function ran');
-//   const input = document.getElementById('task');
-//   const toDo = input.value;
-//   const textNode = document.createTextNode(toDo);
-//   console.log(textNode);
-//   li.appendChild(textNode);
-//   li.appendChild(document.createElement('br'));
-// }
-
-// function strikeThrough(){
-//   li.classList.toggle("strike");
-// }
 
 
 
