@@ -1,10 +1,16 @@
 const ul = document.getElementById('list'); 
 const submit = document.getElementById('submit');
+const li = document.getElementById('listItem');
+// const deleteToDo = document.createElement('button');
+// const li = document.createElement('li'); 
+// const input = document.getElementById('taskBox');
+// const toDo = input.value;
 // const cancel = document.getElementById('delete');
 // cancel();
 
 submit.addEventListener('click',display);
 ul.addEventListener('click',checkOff);
+// deleteToDo.addEventListener('click',deleteListItem);
 
 function checkBox(){
   const check = document.createElement('input');
@@ -13,9 +19,11 @@ function checkBox(){
   return check;      
 }
 
-function cancel(){
+function cancelTask(){
   const deleteToDo = document.createElement('button');
   deleteToDo.innerHTML = "Delete";
+  ul.removeChild(li);
+}
   console.log(deleteToDo);
   return deleteToDo;
 }
@@ -25,15 +33,16 @@ function display(){
   const input = document.getElementById('taskBox');
   const toDo = input.value;
   const textNode = document.createTextNode(toDo);
-  const li = document.createElement('li'); 
+  // const li = document.createElement('li'); 
+  // const li = document.getElementById('listItem');
   const check = checkBox();
   li.appendChild(check);  
   li.appendChild(textNode);
   ul.appendChild(li);
   const nextLine = document.createElement('br');
-  const deleteToDo = cancel();
+  const deleteToDo = cancelTask();
   li.appendChild(deleteToDo);
-  ul.appendChild(nextLine);
+  li.appendChild(nextLine);  
 }
   
 function checkOff(e){
@@ -53,8 +62,9 @@ function checkOff(e){
   }
 }
 
-
-
+// function deleteListItem(){
+//   ul.removeChild(li);
+// }
 
 
 
