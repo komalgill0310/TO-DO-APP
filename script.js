@@ -1,52 +1,49 @@
 const ul = document.getElementById('list'); 
 const submit = document.getElementById('submit');
-const li = document.getElementById('listItem');
-// const deleteToDo = document.createElement('button');
-// const li = document.createElement('li'); 
-// const input = document.getElementById('taskBox');
-// const toDo = input.value;
-// const cancel = document.getElementById('delete');
-// cancel();
 
 submit.addEventListener('click',display);
 ul.addEventListener('click',checkOff);
-// deleteToDo.addEventListener('click',deleteListItem);
 
 function checkBox(){
   const check = document.createElement('input');
   check.setAttribute('type','checkbox');
+  check.setAttribute('class','checked');
   console.log(check); 
   return check;      
 }
 
-function cancelTask(){
-  const deleteToDo = document.createElement('button');
-  deleteToDo.innerHTML = "Delete";
-  ul.removeChild(li);
+function createDeleteButton(){  
+  const deleteButton = document.createElement('button');
+  deleteButton.textContent = 'X';
+  deleteButton.setAttribute('class','delete');
+  return deleteButton;
 }
-  console.log(deleteToDo);
-  return deleteToDo;
+
+function deleteToDo(e){
+  if(e.target.classList.contains('delete') && e.target.classList.contains('checked')){
+    const taskToRemove = e.target.parentElement;
+    taskToRemove.remove();
+  }
 }
 
 function display(){
   console.log('this function ran');
   const input = document.getElementById('taskBox');
   const toDo = input.value;
-  const textNode = document.createTextNode(toDo);
-  // const li = document.createElement('li'); 
-  // const li = document.getElementById('listItem');
+  const li = document.createElement('li'); 
+  const textNode = document.createTextNode(toDo);   
+  const nextLine = document.createElement('br'); 
   const check = checkBox();
-  li.appendChild(check);  
-  li.appendChild(textNode);
+  const deleteTask = createDeleteButton();
+  deleteTask.addEventListener('click',deleteToDo);
   ul.appendChild(li);
-  const nextLine = document.createElement('br');
-  const deleteToDo = cancelTask();
-  li.appendChild(deleteToDo);
+  li.appendChild(check);  
+  li.appendChild(textNode); 
+  li.appendChild(deleteTask);
   li.appendChild(nextLine);  
 }
   
 function checkOff(e){
-  console.log("e");
   const boxCheck = e.target;
   if(boxCheck.type==="checkbox"){
   boxCheck.checked = !boxCheck.checked;
@@ -61,10 +58,6 @@ function checkOff(e){
   }
   }
 }
-
-// function deleteListItem(){
-//   ul.removeChild(li);
-// }
 
 
 
