@@ -7,7 +7,6 @@ ul.addEventListener('click',checkOff);
 function checkBox(){
   const check = document.createElement('input');
   check.setAttribute('type','checkbox');
-  check.setAttribute('class','checked');
   console.log(check); 
   return check;      
 }
@@ -20,7 +19,7 @@ function createDeleteButton(){
 }
 
 function deleteToDo(e){
-  if(e.target.classList.contains('delete') && e.target.classList.contains('checked')){
+  if(e.target.parentElement.classList.contains('strike')){
     const taskToRemove = e.target.parentElement;
     taskToRemove.remove();
   }
