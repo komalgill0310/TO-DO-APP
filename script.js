@@ -7,6 +7,7 @@ ul.addEventListener('click',checkOff);
 function checkBox(){
   const check = document.createElement('input');
   check.setAttribute('type','checkbox');
+  check.setAttribute('class','checkBox');
   console.log(check); 
   return check;      
 }
@@ -57,6 +58,8 @@ function checkOff(e){
   }
   }
 }
+
+
 
 
 
